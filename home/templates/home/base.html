@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br" class="dark">
+<head>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% block title %}Emanuel Garcia Langer - Portifolio{% endblock %}</title>
+    
+    <!-- Link do CSS gerado pelo Tailwind -->
+    <link href="{% static 'output.css' %}" rel="stylesheet" />
+    
+    <!-- Google Fonts (exemplo: Inter) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap" rel="stylesheet">
+</head>
+
+<body class="bg-gray-900 text-gray-100 min-h-screen transition-colors duration-300">
+    <header class="p-4 flex justify-between items-center bg-gray-800 dark:bg-gray-900 shadow">
+        <h1 class="text-xl font-bold">Meu Portfólio</h1>
+        <button id="toggleTheme" aria-label="Alternar tema" 
+            class="bg-gray-700 hover:bg-gray-600 dark:bg-gray-200 dark:hover:bg-gray-300 rounded px-3 py-1 text-sm font-medium text-gray-200 dark:text-gray-900 transition-colors">
+            Mudar tema
+        </button>
+    </header>
+    
+    <main class="p-6">
+        {% block content %}
+        <!-- Conteúdo específico das páginas -->
+        {% endblock %}
+    </main>
+    
+    <footer class="p-4 text-center text-gray-400 text-sm">
+        © {{ now.year }} Meu Nome. Todos os direitos reservados.
+    </footer>
+    
+    <script>
+        const html = document.documentElement;
+        const toggleBtn = document.getElementById('toggleTheme');
+
+        function setTheme(theme) {
+            if (theme === 'dark') {
+                html.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                html.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        toggleBtn.addEventListener('click', () => {
+            if (html.classList.contains('dark')) {
+                setTheme('light');
+            } else {
+                setTheme('dark');
+            }
+        });
+
+        // Aplica tema salvo ou define padrão dark
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'light') {
+                setTheme('light');
+            } else {
+                setTheme('dark');
+            }
+        });
+    </script>
+</body>
+</html>
