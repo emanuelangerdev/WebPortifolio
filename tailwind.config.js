@@ -15,8 +15,8 @@ module.exports = {
         accent: '#F59E0B',
       },
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
-        serif: ['Merriweather', 'serif'],
+        sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        serif: ['Merriweather', 'ui-serif', 'Georgia', 'serif'],
       }
     },
   },
