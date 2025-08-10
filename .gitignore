@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+*.sqlite3
+db.sqlite3
+
+# Virtualenv
+venv/
+.env/
+
+# Django static files (coletados)
+staticfiles/
+
+# Node
+node_modules/
+package-lock.json
+
+# Tailwind build output
+static/css/output.css
+
+# Logs
+*.log
+
+# IDEs e configs locais
+.vscode/
+.idea/
