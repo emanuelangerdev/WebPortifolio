@@ -1,6 +1,11 @@
 {% extends "./base.html" %}
-
+{% load static %}
 {% block content %}
 
-<h1 class="font-serif text-4xl">Teste</h1>
+<div class="bg-bg text-text font-sans p-6">
+  <h1 class="font-serif text-4xl text-primary mb-4">Título com Playfair Display e cor primary</h1>
+  <p>Texto com fonte sans e cor text.</p>
+  <button class="bg-accent text-bg px-4 py-2 rounded">Botão</button>
+</div>
+
 {% endblock %}

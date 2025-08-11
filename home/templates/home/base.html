@@ -4,65 +4,20 @@
     {% load static %}
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{% block title %}Emanuel Garcia Langer - Portifolio{% endblock %}</title>
-    
+    <title>{% block title %}Meu Portfólio{% endblock %}</title>
+
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100..900;1,100..900&family=Merriweather:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
 
-    <!-- Tailwind CSS -->
-    <link href="{% static 'output.css' %}" rel="stylesheet" />
-
-    <!-- Script para definir tema antes de renderizar -->
-    <script>
-        (function() {
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'light') {
-                document.documentElement.classList.remove('dark');
-            } else {
-                document.documentElement.classList.add('dark'); // padrão: escuro
-            }
-        })();
-    </script>
+    <!-- Tailwind compilado -->
+    <link rel="stylesheet" href="{% static 'output.css' %}">
 </head>
 
-<body class="bg-gray-900 text-gray-100 min-h-screen transition-colors duration-300 font-sans">
-    <header class="p-4 flex justify-between items-center bg-gray-800 dark:bg-gray-900 shadow">
-        <h1 class="text-xl font-bold">Meu Portfólio</h1>
-        <button id="toggleTheme" aria-label="Alternar tema" 
-            class="bg-gray-700 hover:bg-gray-600 dark:bg-gray-200 dark:hover:bg-gray-300 rounded px-3 py-1 text-sm font-medium text-gray-200 dark:text-gray-900 transition-colors">
-            Mudar tema
-        </button>
-    </header>
-    
-    <main class="p-6">
+<body class="bg-bg text-text font-sans min-h-screen transition-colors duration-300">
+
+    <main>
         {% block content %}{% endblock %}
     </main>
-    
-    <footer class="p-4 text-center text-gray-400 text-sm">
-        © {{ now.year }} Meu Nome. Todos os direitos reservados.
-    </footer>
-    
-    <script>
-        const html = document.documentElement;
-        const toggleBtn = document.getElementById('toggleTheme');
 
-        function setTheme(theme) {
-            if (theme === 'dark') {
-                html.classList.add('dark');
-                localStorage.setItem('theme', 'dark');
-            } else {
-                html.classList.remove('dark');
-                localStorage.setItem('theme', 'light');
-            }
-        }
-
-        toggleBtn.addEventListener('click', () => {
-            if (html.classList.contains('dark')) {
-                setTheme('light');
-            } else {
-                setTheme('dark');
-            }
-        });
-    </script>
 </body>
 </html>
