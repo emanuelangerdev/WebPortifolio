@@ -11,13 +11,61 @@
 
     <!-- Tailwind compilado -->
     <link rel="stylesheet" href="{% static 'output.css' %}">
+
+    <!-- Script para aplicar tema salvo antes de renderizar -->
+    <script>
+        if (localStorage.theme === 'dark' || 
+            (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+
+    {% block extra_head %}{% endblock %}
 </head>
 
-<body class="bg-bg text-text font-sans min-h-screen transition-colors duration-300">
+<body class="flex min-h-screen font-sans transition-colors duration-300 bg-bg text-text">
+
+    <!-- Botão no topo -->
+    <header>
+        <button id="theme-toggle" class="fixed z-10 w-10 h-10 transition-colors duration-300 rounded-full top-4 right-4 bg-primary text-bg">
+            🌙
+        </button>
+    </header>
 
     <main>
         {% block content %}{% endblock %}
     </main>
 
+    <!-- Script para alternar tema -->
+    <script>
+        const btn = document.getElementById('theme-toggle');
+
+        function setTheme(theme) {
+            if (theme === 'dark') {
+                document.documentElement.classList.add('dark');
+                localStorage.theme = 'dark';
+                btn.textContent = '☀️';
+            } else {
+                document.documentElement.classList.remove('dark');
+                localStorage.theme = 'light';
+                btn.textContent = '🌙';
+            }
+        }
+
+        // Estado inicial
+        if (document.documentElement.classList.contains('dark')) {
+            btn.textContent = '☀️';
+        }
+
+        btn.addEventListener('click', () => {
+            if (document.documentElement.classList.contains('dark')) {
+                setTheme('light');
+            } else {
+                setTheme('dark');
+            }
+        });
+    </script>
 </body>
 </html>

@@ -1,11 +1,52 @@
 {% extends "./base.html" %}
 {% load static %}
+
+{% block extra_head %}
+<style>
+  .nav-item {
+    cursor: pointer;
+    padding: 0.4rem 1rem;
+    border-radius: 9999px;
+    transition: color 0.3s ease, background-image 0.3s ease;
+    display: inline-block;
+    background-color: transparent;
+  }
+
+  .nav-item:hover {
+    background-color: rgba(255, 255, 255,  0.7);
+    color: #5002e1;
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.3);
+  }
+</style>
+
+{% endblock %}
 {% block content %}
 
-<div class="bg-bg text-text font-sans p-6">
-  <h1 class="font-serif text-4xl text-primary mb-4">Título com Playfair Display e cor primary</h1>
-  <p>Texto com fonte sans e cor text.</p>
-  <button class="bg-accent text-bg px-4 py-2 rounded">Botão</button>
+<div class="fixed z-50 flex items-center h-10 transform -translate-x-1/2 border rounded-full shadow-lg bg-white/20 top-10 left-1/2 backdrop-blur-md border-white/40">
+  <nav class="flex w-full font-mono text-sm gap-14 text-text">
+    <div class="flex items-center gap-2 whitespace-nowrap">
+      <p class="nav-item">
+        <i class="text-xl bi bi-house"></i> Inicio
+      </p>
+      <p class="text-transparent cursor-default">--</p>
+      <p class="nav-item">
+        <i class="text-xl bi bi-code-slash"></i> Linguagens
+      </p>
+      <p class="text-transparent cursor-default">--</p>
+      <p class="nav-item">
+        <i class="text-xl bi bi-file-earmark"></i> Projetos
+      </p>
+      <p class="text-transparent cursor-default">--</p>
+      <p class="nav-item">
+        <i class="text-xl bi bi-telephone"></i> Contato
+      </p>
+    </div>
+  </nav>
 </div>
+
+
 
 {% endblock %}

@@ -1,6 +1,6 @@
 /* static/input.css */
 @import "tailwindcss";
-@source "../templates"; /* ajuste se seu templates estiverem em outro lugar */
+@import 'bootstrap-icons/font/bootstrap-icons.css';
 
 /* base: suas variáveis e fonte */
 @layer base {
